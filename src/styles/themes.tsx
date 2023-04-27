@@ -1,0 +1,33 @@
+export const lightTheme = {
+    background: "#d4e0d4",
+    formBg: "white",
+    boxShadow: "#cec9c9", 
+    headingColor: "#11541f", 
+    borderColor: "#686262", 
+    buttonBg: "#e8c05a", 
+    buttonColor: "white",
+    buttonBgHover: "#f3cd6e", 
+    buttonColorHover: "white", 
+    labelColor: "black", 
+    userBgV1: "#fffaec", 
+    userBgV2:  "#e1ebd4", 
+    userColorV1: "#66361f",
+    userColorV2: "#11541f", 
+};
+  
+export  const darkTheme = {
+    background: "#232323 ",
+    formBg: "#0f0f0f", 
+    boxShadow: "#0c0c0c", 
+    headingColor: "white", 
+    borderColor: "black", 
+    buttonBg: "white",
+    buttonColor: "black", 
+    buttonBgHover: "#343750", 
+    buttonColorHover: "white", 
+    labelColor: "white", 
+    userBgV1: "black",
+    userBgV2: "black", 
+    userColorV1: "white", 
+    userColorV2: "white", 
+};

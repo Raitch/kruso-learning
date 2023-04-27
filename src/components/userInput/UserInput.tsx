@@ -1,18 +1,6 @@
 import React from "react";
-import styled from "styled-components";
 
-const StyledLabel = styled.label`
-  color: black;
-`;
-
-const StyledInput = styled.input`
-  padding: 4px;
-  border: none;
-  border-bottom: 2px solid #686262;
-  margin-bottom: 1rem;
-  margin-top: 1rem;
-  font-size: large;
-`;
+import { StyledLabel, StyledInput, ErrorMessage } from "./UserInputStyled";
 
 type Props = {
   label: string;
@@ -22,7 +10,8 @@ type Props = {
   optional?: boolean;
   minLength?: number;
   errors?: any;
-  pattern?: string;
+  pattern?: RegExp;
+  mess?: string; 
 };
 
 const UserInput = ({
@@ -33,7 +22,8 @@ const UserInput = ({
   optional = true,
   minLength,
   errors,
-  pattern,
+  pattern, 
+  mess
 }: Props) => (
   <>
     <StyledLabel htmlFor={name}>{label}</StyledLabel>
@@ -41,22 +31,22 @@ const UserInput = ({
       id={name}
       {...register(name, {
         required: optional,
-        minLength: {
-          value: minLength,
-          message: "Input must be at least two characters",
-        },
+        minLength,
+        pattern: {
+          value: pattern,  
+          message: mess, 
+        }, 
       })}
       type={type || "text"}
-      pattern={pattern}
     />
 
     {errors && (
-      <p>
+      <ErrorMessage>
         {errors[name]?.type === "required" && `${label} is required`}
         {errors[name]?.type === "minLength" &&
           `${label} must be at least ${minLength} characters`}
-        {errors[name]?.type === "pattern" && `Invalid format for ${label}`}
-      </p>
+        {errors[name]?.type === "pattern" && errors[name].message}
+      </ErrorMessage>
     )}
   </>
 );
